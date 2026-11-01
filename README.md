@@ -6,7 +6,17 @@ Assistant name: **Whis**, pronounced **whees**.
 
 This is a new, key-free iOS feasibility app. It is **not a completed CJ port**.
 No Mac purchase is needed: the included GitHub Actions workflow uses a hosted
-macOS runner to compile the app. No cloud build has been run yet.
+macOS runner to compile the app. The [first cloud build succeeded](https://github.com/rogamer762/whismeta/actions/runs/41325377367),
+including all four simulator unit tests and the unsigned ARM64 iPhone build.
+
+## Install the existing test build
+
+Open the successful build link above while signed in to GitHub. Under **Artifacts**,
+download **WhisProbe-unsigned**, unzip it, and transfer `WhisProbe-unsigned.ipa` to
+your iPhone's Files app. Import it through your existing SideStore/AltStore setup
+to sign and install it. Allow Microphone and Speech Recognition when the test
+app asks. No AI key is needed. This is the hardware probe described below, not
+the finished assistant.
 
 ## What is implemented
 
@@ -18,10 +28,13 @@ macOS runner to compile the app. No cloud build has been run yet.
 - A shareable JSON report without audio, full transcripts, API keys or account credentials.
 - Simulator unit tests and an unsigned device IPA build workflow.
 
-**Not verified:** compilation on Xcode, recognition on this iPhone, locked-screen
-operation, music quality, wake-word reliability, and YouTube Music autoplay.
-The project is prepared on Windows, which has no Xcode in this workspace.
-The first cloud run must compile and run the included tests before installation.
+**Verified:** Xcode compilation for simulator and device, four passing simulator
+unit tests, and the unsigned IPA's package structure, permissions and ARM64 executable.
+
+**Not verified:** recognition on this iPhone, locked-screen operation, music quality,
+wake-word reliability, and YouTube Music autoplay. This workspace is on Windows;
+Xcode compilation and unit tests run in the cloud. Passing simulator tests does
+not establish that the required glasses/music experience works on hardware.
 
 **Not implemented:** a trained keyword model, AI conversations, the Windows backend,
 Meta camera integration, pause/skip/playlist control, or direct control of the
@@ -46,9 +59,10 @@ capabilities to this app. Opening a URL is not evidence of successful playback.
 6. If the workflow fails, download **WhisProbe-build-logs** or copy the first
    build error. An IPA cannot be produced by this Windows workspace alone.
 
-No GitHub repository was created or published by this local setup. This workspace
-currently has no configured Git remote. No credentials or AI keys are needed for
-the build workflow.
+The prepared source was published with the user's approval to
+[rogamer762/whismeta](https://github.com/rogamer762/whismeta). The build workflow
+requires no signing credentials or AI keys. GitHub authentication is needed to
+push changes; SideStore/AltStore signs the IPA separately.
 
 ## Test on the phone
 
