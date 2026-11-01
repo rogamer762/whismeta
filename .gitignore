@@ -1,0 +1,13 @@
+upstream/
+.build/
+*.xcodeproj/
+*.xcworkspace/
+*.ipa
+*.xcarchive/
+__pycache__/
+.env
+.env.*
+!.env.example
+*.p12
+*.mobileprovision
+reports/
